@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Carbon Calculator - ClimaLearn AI</title>
-  <meta name="description" content="Use ClimaLearn AI's free carbon footprint calculator to measure your business emissions across Scope 1, 2, and 3.">
+  <meta name="description" content="Use ClimaLearn.ai's AI-assisted carbon footprint calculator to estimate scope 1, 2, and 3 emissions for your organization.">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -17,10 +17,10 @@
       <button class="mobile-toggle">☰</button>
       <nav class="nav">
         <a href="index.html">Home</a>
-        <a href="about.html">About Us</a>
+        <a href="about.html">About</a>
         <a href="services.html">Services</a>
         <a href="carbon-calculator.html">Carbon Calculator</a>
-        <a href="courses.html">Courses</a>
+        <a href="courses.html">Academy</a>
         <a href="contact.html">Contact</a>
         <a href="contact.html" class="nav-cta">Get Started</a>
       </nav>
@@ -28,23 +28,23 @@
   </header>
 
   <section class="page-header">
-    <div class="float-leaf float-leaf-2">🌍</div>
+    <div class="float-leaf float-leaf-2">🌡️</div>
     <div class="float-leaf float-leaf-3">📊</div>
     <div class="container">
       <div class="breadcrumb">
-        <a href="index.html">Home</a> / Carbon Calculator
+        <a href="index.html">Home</a> / Carbon Intelligence
       </div>
-      <h1>Carbon Footprint Calculator</h1>
-      <p>Measure your organization's emissions in minutes</p>
+      <h1>Carbon Footprint Estimator</h1>
+      <p>AI-assisted scope 1, 2, and 3 emissions modeling in under 2 minutes</p>
     </div>
   </section>
 
   <section class="section calculator-section">
     <div class="container">
       <div class="section-header fade-in">
-        <span class="section-tag">Free Tool</span>
-        <h2>Calculate Your Carbon Footprint</h2>
-        <p>Enter your monthly consumption data to get an instant estimate of your carbon emissions.</p>
+        <span class="section-tag">Quick Estimate</span>
+        <h2>Enter Your Monthly Consumption</h2>
+        <p>Our ML model applies industry-standard emission factors to generate an initial carbon profile. For a full assessment, contact our team.</p>
       </div>
       <div class="calculator-wrapper fade-in">
         <div class="form-group">
@@ -63,10 +63,10 @@
           <label for="waste">Monthly Waste Generated (tons)</label>
           <input type="number" id="waste" placeholder="e.g. 5" min="0" step="0.5">
         </div>
-        <button onclick="calculateCarbon()" class="btn btn-primary" style="width:100%;justify-content:center;">Calculate My Footprint</button>
+        <button onclick="calculateCarbon()" class="btn btn-primary" style="width:100%;justify-content:center;">Estimate Carbon Footprint</button>
 
         <div class="calculator-result hidden" id="calculator-result">
-          <p style="font-size:1rem;color:var(--gray);margin-bottom:8px;">Your estimated annual carbon footprint:</p>
+          <p style="font-size:1rem;color:var(--gray);margin-bottom:8px;">Estimated annual carbon footprint:</p>
           <div class="result-number" id="result-number">0 tCO₂e</div>
           <p id="result-text" style="margin-top:12px;"></p>
         </div>
@@ -77,36 +77,37 @@
   <section class="section">
     <div class="container">
       <div class="section-header fade-in">
-        <span class="section-tag">Why Measure?</span>
-        <h2>Track All Three Scopes</h2>
+        <span class="section-tag">Capabilities</span>
+        <h2>Beyond Basic Estimation</h2>
+        <p>The full Carbon Intelligence Suite provides deeper analysis and decision support.</p>
       </div>
       <div class="features-grid">
         <div class="feature-card fade-in">
           <div class="feature-icon">🔌</div>
           <div>
             <h4>Scope 1 — Direct Emissions</h4>
-            <p>Emissions from owned sources like company vehicles, natural gas heating, and on-site fuel combustion.</p>
+            <p>Company-owned sources including fleet vehicles, on-site fuel combustion, and refrigerant leakage tracking.</p>
           </div>
         </div>
         <div class="feature-card fade-in">
           <div class="feature-icon">⚡</div>
           <div>
             <h4>Scope 2 — Indirect Energy</h4>
-            <p>Emissions from purchased electricity, steam, heating, and cooling used by your organization.</p>
+            <p>Purchased electricity, steam, heating, and cooling with location-based and market-based calculation methods.</p>
           </div>
         </div>
         <div class="feature-card fade-in">
           <div class="feature-icon">🚚</div>
           <div>
             <h4>Scope 3 — Value Chain</h4>
-            <p>Emissions from your supply chain, business travel, waste disposal, and product lifecycle.</p>
+            <p>15 categories of value chain emissions including purchased goods, transportation, and product use phase.</p>
           </div>
         </div>
         <div class="feature-card fade-in">
-          <div class="feature-icon">📊</div>
+          <div class="feature-icon">📈</div>
           <div>
-            <h4>Full Reporting Suite</h4>
-            <p>Export compliant reports aligned with GRI, SASB, TCFD, and GHG Protocol standards.</p>
+            <h4>Reduction Pathways</h4>
+            <p>Scenario modeling to compare decarbonization strategies and track progress toward science-based targets.</p>
           </div>
         </div>
       </div>
@@ -121,7 +122,7 @@
             <div class="logo-icon">CL</div>
             Clima<span>Learn</span> AI
           </a>
-          <p>Leading the Way to a Low-Carbon Future. AI-powered sustainability solutions for businesses worldwide.</p>
+          <p style="font-size:0.85rem;opacity:0.7;max-width:300px;">AI-Driven Sustainability Intelligence. Built for engineers, analysts, and consultants shaping the green economy.</p>
           <div class="footer-social">
             <a href="#" aria-label="Facebook">f</a>
             <a href="#" aria-label="Twitter">𝕏</a>
@@ -130,31 +131,31 @@
           </div>
         </div>
         <div>
-          <h4>Services</h4>
+          <h4>Platform</h4>
           <ul>
-            <li><a href="services.html">Afforestation & Plantation</a></li>
-            <li><a href="services.html">Solid Waste Management</a></li>
-            <li><a href="services.html">Carbon Offset Registry</a></li>
-            <li><a href="services.html">Eco-Friendly Partner</a></li>
-            <li><a href="services.html">ESG Consultancy</a></li>
+            <li><a href="services.html">ESG Analytics</a></li>
+            <li><a href="services.html">Carbon Intelligence</a></li>
+            <li><a href="services.html">HSE Safety</a></li>
+            <li><a href="services.html">Green Building</a></li>
+            <li><a href="services.html">Data Hub</a></li>
           </ul>
         </div>
         <div>
-          <h4>Solutions</h4>
+          <h4>Learn</h4>
           <ul>
-            <li><a href="carbon-calculator.html">Carbon Calculator</a></li>
             <li><a href="courses.html">ClimaLearn Academy</a></li>
-            <li><a href="services.html">Digital Integration</a></li>
-            <li><a href="services.html">Carbon Market</a></li>
+            <li><a href="carbon-calculator.html">Carbon Calculator</a></li>
+            <li><a href="courses.html">LEED Training</a></li>
+            <li><a href="courses.html">ESG Courses</a></li>
           </ul>
         </div>
         <div>
-          <h4>Quick Links</h4>
+          <h4>Company</h4>
           <ul>
-            <li><a href="about.html">About Us</a></li>
+            <li><a href="about.html">About</a></li>
             <li><a href="contact.html">Contact</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Terms</a></li>
           </ul>
         </div>
       </div>
