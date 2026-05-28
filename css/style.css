@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -5,8 +7,8 @@
 }
 
 :root {
-  --primary: #2d6a4f;
-  --primary-dark: #1b4332;
+  --primary: #1b6b3a;
+  --primary-dark: #0a2e1e;
   --primary-light: #40916c;
   --secondary: #95d5b2;
   --accent: #52b788;
@@ -15,8 +17,11 @@
   --gray: #6b7280;
   --light-gray: #e5e7eb;
   --white: #ffffff;
-  --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
+  --chart: #00b4d8;
+  --warn: #f4a261;
+  --error: #e76f51;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.1);
   --radius: 12px;
   --transition: all 0.3s ease;
 }
@@ -26,7 +31,7 @@ html {
 }
 
 body {
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
   color: #333;
   line-height: 1.6;
   background: var(--white);
