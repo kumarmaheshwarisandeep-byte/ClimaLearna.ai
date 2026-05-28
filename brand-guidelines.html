@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ClimaLearn.ai — Brand Guidelines</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #f8fafc; color: #0f172a; line-height: 1.6; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+
+    /* Nav */
+    .nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; max-width: 1200px; margin: 0 auto; }
+    .nav-logo { font-size: 1.3rem; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+    .nav-logo span { color: #16a34a; }
+    .nav-links { display: flex; gap: 28px; font-size: 0.85rem; font-weight: 500; color: #64748b; }
+    .nav-links a { text-decoration: none; color: inherit; transition: color 0.2s; }
+    .nav-links a:hover { color: #16a34a; }
+
+    /* Hero */
+    .hero { padding: 100px 0 80px; text-align: center; background: linear-gradient(135deg, #f0fdf4 0%, #eff6ff 50%, #f8fafc 100%); }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(22, 163, 74, 0.1); color: #16a34a; padding: 8px 20px; border-radius: 100px; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.5px; margin-bottom: 24px; text-transform: uppercase; }
+    .hero h1 { font-size: 3.5rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 16px; }
+    .hero h1 span { background: linear-gradient(135deg, #16a34a, #2563eb); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero p { font-size: 1.15rem; color: #64748b; max-width: 600px; margin: 0 auto 32px; }
+    .hero-buttons { display: flex; gap: 12px; justify-content: center; }
+    .btn { padding: 14px 32px; border-radius: 10px; font-weight: 600; font-size: 0.9rem; text-decoration: none; transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px; }
+    .btn-primary { background: #16a34a; color: white; }
+    .btn-primary:hover { background: #15803d; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(22,163,74,0.3); }
+    .btn-outline { border: 2px solid #e2e8f0; color: #0f172a; }
+    .btn-outline:hover { border-color: #16a34a; color: #16a34a; }
+
+    /* Logo Showcase */
+    .section { padding: 80px 0; }
+    .section-header { text-align: center; margin-bottom: 56px; }
+    .section-tag { display: inline-block; background: rgba(22, 163, 74, 0.08); color: #16a34a; padding: 6px 16px; border-radius: 100px; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.5px; margin-bottom: 12px; text-transform: uppercase; }
+    .section-header h2 { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 8px; }
+    .section-header p { color: #64748b; max-width: 500px; margin: 0 auto; }
+
+    .logo-showcase { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
+    .logo-card { background: white; border-radius: 16px; padding: 40px; border: 1px solid #e2e8f0; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 200px; transition: box-shadow 0.3s; }
+    .logo-card:hover { box-shadow: 0 8px 40px rgba(0,0,0,0.06); }
+    .logo-card-label { font-size: 0.75rem; color: #94a3b8; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 20px; }
+
+    /* Main Logo Circle */
+    .logo-circle { width: 96px; height: 96px; border-radius: 50%; background: linear-gradient(135deg, #16a34a, #059669, #2563eb); display: flex; align-items: center; justify-content: center; position: relative; margin-bottom: 16px; }
+    .logo-circle-inner { width: 72px; height: 72px; border-radius: 50%; background: white; display: flex; align-items: center; justify-content: center; font-size: 2rem; }
+    .logo-horizontal { display: flex; align-items: center; gap: 14px; }
+    .logo-horizontal .logo-circle { width: 44px; height: 44px; margin-bottom: 0; }
+    .logo-horizontal .logo-circle-inner { width: 32px; height: 32px; font-size: 0.9rem; }
+    .logo-text { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.02em; }
+    .logo-text .green { color: #16a34a; }
+    .logo-text .dark { color: #0f172a; }
+    .logo-text .ai { color: #2563eb; font-weight: 400; }
+
+    /* Color Palette */
+    .color-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+    .color-swatch { border-radius: 12px; padding: 24px; min-height: 120px; display: flex; flex-direction: column; justify-content: flex-end; color: white; font-weight: 500; font-size: 0.85rem; }
+    .color-swatch .hex { font-size: 0.75rem; opacity: 0.7; margin-top: 4px; font-weight: 400; }
+    .color-swatch.light { color: #0f172a; }
+    .swatch-deep-green { background: #16a34a; }
+    .swatch-teal { background: #059669; }
+    .swatch-blue { background: #2563eb; }
+    .swatch-navy { background: #0f172a; }
+    .swatch-gray { background: #f3f4f6; color: #0f172a; }
+    .swatch-gray .hex { color: #64748b; }
+
+    /* Typography */
+    .typo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    .typo-card { background: white; border-radius: 16px; padding: 40px; border: 1px solid #e2e8f0; }
+    .typo-card h3 { font-size: 0.8rem; color: #94a3b8; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 20px; }
+    .typo-h1 { font-size: 3rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 8px; }
+    .typo-h2 { font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
+    .typo-h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 8px; }
+    .typo-body { font-size: 1rem; color: #64748b; }
+    .typo-label { font-size: 0.75rem; color: #94a3b8; font-weight: 500; }
+
+    /* Website Mockup */
+    .mockup { background: white; border-radius: 20px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.08); }
+    .mockup-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; border-bottom: 1px solid #e2e8f0; }
+    .mockup-dots { display: flex; gap: 6px; }
+    .mockup-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .mockup-dot:nth-child(1) { background: #ef4444; }
+    .mockup-dot:nth-child(2) { background: #eab308; }
+    .mockup-dot:nth-child(3) { background: #22c55e; }
+    .mockup-url { font-size: 0.75rem; color: #94a3b8; }
+    .mockup-body { padding: 48px; background: linear-gradient(135deg, #f0fdf4 0%, #eff6ff 100%); }
+    .mockup-hero { text-align: center; }
+    .mockup-hero h2 { font-size: 2.5rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 12px; }
+    .mockup-hero h2 span { background: linear-gradient(135deg, #16a34a, #2563eb); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .mockup-hero p { color: #64748b; margin-bottom: 24px; }
+    .mockup-stats { display: flex; justify-content: center; gap: 48px; margin-top: 32px; }
+    .mockup-stat { text-align: center; }
+    .mockup-stat-num { font-size: 1.5rem; font-weight: 700; color: #16a34a; }
+    .mockup-stat-label { font-size: 0.75rem; color: #94a3b8; }
+
+    /* Logo Variations */
+    .variations-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .variation-card { background: white; border-radius: 16px; padding: 32px 20px; border: 1px solid #e2e8f0; text-align: center; min-height: 160px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .variation-card.dark-bg { background: #0f172a; }
+    .variation-card.dark-bg .variation-label { color: rgba(255,255,255,0.5); }
+    .variation-label { font-size: 0.7rem; color: #94a3b8; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 16px; }
+
+    /* Icons */
+    .icon-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .icon-card { background: white; border-radius: 16px; padding: 32px 20px; border: 1px solid #e2e8f0; text-align: center; }
+    .icon-display { width: 56px; height: 56px; margin: 0 auto 12px; border-radius: 12px; background: #f0fdf4; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: #16a34a; }
+    .icon-label { font-size: 0.75rem; color: #64748b; font-weight: 500; }
+
+    /* Mockup image placeholder */
+    .mockup-visual { width: 100%; height: 200px; background: linear-gradient(135deg, #16a34a15, #2563eb15); border-radius: 12px; margin: 24px 0; display: flex; align-items: center; justify-content: center; font-size: 3rem; position: relative; overflow: hidden; }
+    .mockup-visual::before { content: ''; position: absolute; width: 300px; height: 300px; border-radius: 50%; background: radial-gradient(circle, rgba(22,163,74,0.1), transparent); top: -100px; right: -100px; }
+    .mockup-visual::after { content: ''; position: absolute; width: 200px; height: 200px; border-radius: 50%; background: radial-gradient(circle, rgba(37,99,235,0.08), transparent); bottom: -50px; left: -50px; }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+    /* Stat card */
+    .stat-card { background: white; border-radius: 16px; padding: 32px; border: 1px solid #e2e8f0; text-align: center; }
+    .stat-card .number { font-size: 2.5rem; font-weight: 800; color: #16a34a; }
+    .stat-card .label { font-size: 0.8rem; color: #64748b; margin-top: 4px; }
+
+    .footer { text-align: center; padding: 40px; border-top: 1px solid #e2e8f0; font-size: 0.8rem; color: #94a3b8; }
+
+    @media (max-width: 768px) {
+      .container { padding: 0 20px; }
+      .hero h1 { font-size: 2rem; }
+      .logo-showcase { grid-template-columns: 1fr; }
+      .color-grid { grid-template-columns: repeat(3, 1fr); }
+      .variations-grid { grid-template-columns: repeat(2, 1fr); }
+      .icon-grid { grid-template-columns: repeat(2, 1fr); }
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      .typo-grid { grid-template-columns: 1fr; }
+      .mockup-stats { flex-direction: column; gap: 16px; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-logo">
+      <div style="width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#16a34a,#2563eb);display:flex;align-items:center;justify-content:center;color:white;font-size:0.8rem;font-weight:700;">CL</div>
+      Clima<span>Learn</span>.ai
+    </div>
+    <div class="nav-links">
+      <a href="#logo">Logo</a>
+      <a href="#colors">Colors</a>
+      <a href="#typography">Typography</a>
+      <a href="#mockup">Preview</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-badge">✦ Brand Guidelines v1.0</div>
+    <h1>Clima<span>Learn</span>.ai</h1>
+    <p>Complete brand identity system for the AI-powered sustainability intelligence platform.</p>
+    <div class="hero-buttons">
+      <a href="#logo" class="btn btn-primary">Explore Brand →</a>
+      <a href="#mockup" class="btn btn-outline">View Website Mockup</a>
+    </div>
+  </section>
+
+  <!-- Logo Section -->
+  <section class="section" id="logo">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Identity</div>
+        <h2>Logo System</h2>
+        <p>Three logo variations for consistent brand recognition across all touchpoints.</p>
+      </div>
+      <div class="logo-showcase">
+
+        <div class="logo-card">
+          <div class="logo-card-label">Primary — Full Logo</div>
+          <div class="logo-horizontal">
+            <div class="logo-circle">
+              <div class="logo-circle-inner">🌿</div>
+            </div>
+            <div class="logo-text">
+              <span class="green">Clima</span><span class="dark">Learn</span><span class="ai">.ai</span>
+            </div>
+          </div>
+          <div style="margin-top:12px;font-size:0.85rem;color:#64748b;">AI for ESG, HSE & Sustainability Intelligence</div>
+          <div style="margin-top:12px;font-size:0.7rem;color:#94a3b8;">Horizontal lockup · Preferred for most applications</div>
+        </div>
+
+        <div class="logo-card">
+          <div class="logo-card-label">Icon — Avatar / Favicon</div>
+          <div class="logo-circle" style="width:80px;height:80px;">
+            <div class="logo-circle-inner" style="width:60px;height:60px;font-size:1.6rem;">🌿</div>
+          </div>
+          <div style="margin-top:12px;font-size:0.7rem;color:#94a3b8;">Standalone icon · App icon · Favicon · Social avatar</div>
+        </div>
+
+        <div class="logo-card" style="background:#0f172a;">
+          <div class="logo-card-label" style="color:rgba(255,255,255,0.5);">Dark Mode — Inverted</div>
+          <div class="logo-horizontal">
+            <div class="logo-circle" style="width:44px;height:44px;">
+              <div class="logo-circle-inner" style="width:32px;height:32px;font-size:0.9rem;">🌿</div>
+            </div>
+            <div class="logo-text">
+              <span class="green" style="color:#22c55e;">Clima</span><span style="color:white;">Learn</span><span style="color:#60a5fa;">.ai</span>
+            </div>
+          </div>
+          <div style="margin-top:12px;font-size:0.7rem;color:rgba(255,255,255,0.3);">For dark backgrounds · Navigation bars · Dark UI</div>
+        </div>
+
+        <div class="logo-card">
+          <div class="logo-card-label">Centered — Stacked</div>
+          <div style="text-align:center;">
+            <div class="logo-circle" style="width:52px;height:52px;margin:0 auto 8px;">
+              <div class="logo-circle-inner" style="width:38px;height:38px;font-size:1.1rem;">🌿</div>
+            </div>
+            <div class="logo-text" style="font-size:1.3rem;">
+              <span class="green">Clima</span><span class="dark">Learn</span><span class="ai">.ai</span>
+            </div>
+            <div style="font-size:0.7rem;color:#94a3b8;margin-top:4px;">AI for ESG, HSE & Sustainability Intelligence</div>
+          </div>
+          <div style="margin-top:12px;font-size:0.7rem;color:#94a3b8;">Centered · Website hero · Presentation slides</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Color Palette -->
+  <section class="section" style="background:#f8fafc;" id="colors">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Color</div>
+        <h2>Brand Palette</h2>
+        <p>Five core colors that define the ClimaLearn.ai visual identity.</p>
+      </div>
+      <div class="color-grid">
+        <div class="color-swatch swatch-deep-green">
+          Deep Green
+          <div class="hex">#16A34A</div>
+          <div style="font-size:0.65rem;opacity:0.5;margin-top:4px;">Primary · Buttons · Links</div>
+        </div>
+        <div class="color-swatch swatch-teal">
+          Teal Green
+          <div class="hex">#059669</div>
+          <div style="font-size:0.65rem;opacity:0.5;margin-top:4px;">Secondary · Hover · Accents</div>
+        </div>
+        <div class="color-swatch swatch-blue">
+          AI Blue
+          <div class="hex">#2563EB</div>
+          <div style="font-size:0.65rem;opacity:0.5;margin-top:4px;">Tech · AI · Data Viz</div>
+        </div>
+        <div class="color-swatch swatch-navy">
+          Dark Navy
+          <div class="hex">#0F172A</div>
+          <div style="font-size:0.65rem;opacity:0.5;margin-top:4px;">Text · Dark UI · Footer</div>
+        </div>
+        <div class="color-swatch swatch-gray light">
+          Light Gray
+          <div class="hex">#F3F4F6</div>
+          <div style="font-size:0.65rem;opacity:0.5;margin-top:4px;">Background · Sections</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Typography -->
+  <section class="section" id="typography">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Typography</div>
+        <h2>Type System</h2>
+        <p>Inter — the same font used by Stripe, Vercel, and GitHub. Clean, modern, screen-optimized.</p>
+      </div>
+      <div class="typo-grid">
+        <div class="typo-card">
+          <h3>Headings</h3>
+          <div class="typo-h1">Heading 1</div>
+          <div class="typo-label">Inter Bold · 48px · -0.03em</div>
+          <div class="typo-h2" style="margin-top:24px;">Heading 2</div>
+          <div class="typo-label">Inter Bold · 32px · -0.02em</div>
+          <div class="typo-h3" style="margin-top:24px;">Heading 3</div>
+          <div class="typo-label">Inter Semibold · 20px</div>
+        </div>
+        <div class="typo-card">
+          <h3>Body & UI</h3>
+          <div style="font-size:1rem;font-weight:400;margin-bottom:8px;">Body text — The quick brown fox jumps over the lazy dog. Environmental intelligence for tomorrow's engineers.</div>
+          <div class="typo-label">Inter Regular · 16px · 1.6</div>
+          <div style="font-size:0.85rem;color:#64748b;margin-top:24px;margin-bottom:8px;">Small / Caption — ESG analytics · Carbon tracking · HSE compliance</div>
+          <div class="typo-label">Inter Medium · 14px</div>
+          <div style="font-size:1.5rem;font-weight:700;color:#16a34a;margin-top:24px;margin-bottom:4px;">0123456789</div>
+          <div class="typo-label">Inter Bold · Numbers · Data points</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Website Mockup -->
+  <section class="section" style="background:linear-gradient(135deg,#f0fdf4,#eff6ff,#f8fafc);" id="mockup">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Website</div>
+        <h2>SaaS Homepage Preview</h2>
+        <p>Modern AI + Sustainability platform interface mockup.</p>
+      </div>
+      <div class="mockup">
+        <div class="mockup-header">
+          <div class="mockup-dots">
+            <span class="mockup-dot"></span>
+            <span class="mockup-dot"></span>
+            <span class="mockup-dot"></span>
+          </div>
+          <div class="mockup-url">climalearna.ai</div>
+          <div style="width:60px;"></div>
+        </div>
+        <div class="mockup-body">
+          <div class="mockup-hero">
+            <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(22,163,74,0.1);color:#16a34a;padding:6px 16px;border-radius:100px;font-size:0.7rem;font-weight:600;margin-bottom:16px;">✦ AI-DRIVEN SUSTAINABILITY INTELLIGENCE</div>
+            <h2>Intelligent Insights. <span>Sustainable Future.</span></h2>
+            <p style="max-width:500px;margin:0 auto;">AI-powered ESG analytics, carbon tracking, HSE intelligence, and green building tools for environmental professionals.</p>
+            <div class="hero-buttons" style="margin-top:24px;">
+              <a href="#" class="btn btn-primary">Get Started →</a>
+              <a href="#" class="btn btn-outline">Explore Platform</a>
+            </div>
+          </div>
+          <div class="mockup-visual">
+            <div style="position:relative;z-index:1;text-align:center;">
+              <div style="font-size:4rem;margin-bottom:8px;">🌍</div>
+              <div style="display:flex;gap:24px;justify-content:center;font-size:0.8rem;color:#64748b;">
+                <span>ESG ⚡</span>
+                <span>Carbon 🌡️</span>
+                <span>HSE 🛡️</span>
+                <span>LEED 🏗️</span>
+              </div>
+            </div>
+          </div>
+          <div class="mockup-stats">
+            <div class="mockup-stat">
+              <div class="mockup-stat-num">AI</div>
+              <div class="mockup-stat-label">Powered Analytics</div>
+            </div>
+            <div class="mockup-stat">
+              <div class="mockup-stat-num">ESG</div>
+              <div class="mockup-stat-label">Multi-Framework</div>
+            </div>
+            <div class="mockup-stat">
+              <div class="mockup-stat-num">HSE</div>
+              <div class="mockup-stat-label">Predictive Risk</div>
+            </div>
+            <div class="mockup-stat">
+              <div class="mockup-stat-num">GB</div>
+              <div class="mockup-stat-label">LEED / Estidama / PQP</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Icon Style -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Icons</div>
+        <h2>Iconography</h2>
+        <p>Minimal line icons blending nature, data, and technology.</p>
+      </div>
+      <div class="icon-grid">
+        <div class="icon-card">
+          <div class="icon-display">🌿</div>
+          <div class="icon-label">Leaf + Data Nodes</div>
+        </div>
+        <div class="icon-card">
+          <div class="icon-display">🧠</div>
+          <div class="icon-label">AI / Intelligence</div>
+        </div>
+        <div class="icon-card">
+          <div class="icon-display">📊</div>
+          <div class="icon-label">Analytics / Charts</div>
+        </div>
+        <div class="icon-card">
+          <div class="icon-display">🌡️</div>
+          <div class="icon-label">Carbon / Climate</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tagline & Messaging -->
+  <section class="section" style="background:#f8fafc;">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Voice</div>
+        <h2>Core Messaging</h2>
+        <p>Primary brand messaging for all communications.</p>
+      </div>
+      <div class="grid-3">
+        <div class="stat-card">
+          <div style="font-size:0.7rem;color:#94a3b8;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:12px;">Tagline</div>
+          <div style="font-size:1.2rem;font-weight:700;color:#0f172a;">AI for ESG, HSE & Sustainability Intelligence</div>
+        </div>
+        <div class="stat-card">
+          <div style="font-size:0.7rem;color:#94a3b8;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:12px;">Hero Headline</div>
+          <div style="font-size:1.2rem;font-weight:700;color:#0f172a;">Intelligent Insights. Sustainable Future.</div>
+        </div>
+        <div class="stat-card">
+          <div style="font-size:0.7rem;color:#94a3b8;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:12px;">Value Prop</div>
+          <div style="font-size:1.2rem;font-weight:700;color:#0f172a;">AI-powered ESG analytics, carbon tracking, HSE intelligence & green building tools.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="section">
+    <div class="container">
+      <div class="grid-3">
+        <div class="stat-card">
+          <div class="number">5</div>
+          <div class="label">Core Brand Colors</div>
+        </div>
+        <div class="stat-card">
+          <div class="number">4</div>
+          <div class="label">Logo Variations</div>
+        </div>
+        <div class="stat-card">
+          <div class="number">1</div>
+          <div class="label">Font Family (Inter)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer">
+    ClimaLearn.ai — Brand Guidelines v1.0 · AI for ESG, HSE & Sustainability Intelligence
+  </div>
+
+</body>
+</html>

@@ -19,9 +19,9 @@ An intelligent sustainability layer for every organization on the planet — whe
 
 | # | Tagline |
 |---|---------|
-| 1 | Climate Intelligence, Engineered by AI |
+| 1 | AI for ESG, HSE & Sustainability Intelligence |
 | 2 | Your AI Copilot for Sustainability |
-| 3 | Data First. Climate Ready. |
+| 3 | Intelligent Insights. Sustainable Future. |
 | 4 | Engineering a Smarter Green Future |
 | 5 | From Spreadsheets to Intelligence |
 | 6 | The Sustainability Stack, Simplified |
@@ -48,26 +48,20 @@ A minimalist wave/pulse icon inspired by both carbon concentration curves and ne
 
 | Name | HEX | Usage |
 |------|-----|-------|
-| Deep Forest | `#0A2E1E` | Headings, primary text, footer backgrounds |
-| Emerald | `#1B6B3A` | Primary buttons, key UI elements, links |
-| Mint | `#52B788` | Hover states, secondary buttons, highlights |
-
-### Secondary Colors
-
-| Name | HEX | Usage |
-|------|-----|-------|
-| Light Mint | `#95D5B2` | Backgrounds, subtle dividers, cards |
-| Ice | `#D8F3DC` | Section backgrounds, hover card fills |
-| Off-white | `#F0F7F4` | Page backgrounds, light sections |
+| Deep Green | `#16A34A` | Primary — Buttons, links, key UI |
+| Teal Green | `#059669` | Secondary — Hover states, accents |
+| AI Blue | `#2563EB` | Technology accent — Data viz, AI elements |
+| Dark Navy | `#0F172A` | Text, dark UI, footer backgrounds |
+| Light Gray | `#F3F4F6` | Page backgrounds, section dividers |
 
 ### Neutral Colors
 
 | Name | HEX | Usage |
 |------|-----|-------|
-| Near Black | `#081C15` | Body text, dark mode backgrounds |
-| Slate | `#2D3E3A` | Secondary text, captions |
-| Gray | `#6B7280` | Placeholder text, meta info |
-| Light Gray | `#E5E7EB` | Borders, dividers, input outlines |
+| Dark Navy | `#0F172A` | Body text, dark mode backgrounds |
+| Slate | `#475569` | Secondary text, captions |
+| Gray | `#64748B` | Placeholder text, meta info |
+| Light Gray | `#E2E8F0` | Borders, dividers, input outlines |
 | White | `#FFFFFF` | Card backgrounds, page backgrounds |
 
 ### Accent Colors
@@ -168,7 +162,7 @@ We sound like a smart, focused engineer who happens to care deeply about the pla
 ## 8. Core Messaging
 
 ### Hero Headline
-**Climate Intelligence for the Next Generation of Engineers**
+**Intelligent Insights. Sustainable Future.**
 
 ### Short Subheading
 AI-powered ESG, HSE, carbon, and green building tools for sustainability professionals.
