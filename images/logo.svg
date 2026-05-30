@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 110" width="580" height="110">
+  <defs>
+    <linearGradient id="circleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2ecc71"/>
+      <stop offset="100%" stop-color="#23A047"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Green circular icon -->
+  <circle cx="55" cy="55" r="46" fill="url(#circleGrad)"/>
+
+  <!-- Leaf shape -->
+  <path d="M55 28 C42 28 30 40 30 53 C30 66 42 78 55 78 C68 78 80 66 80 53 C80 47 77 42 72 38 L55 50 L65 44 C62 40 58 38 55 38 C49 38 44 42 42 47 C40 52 42 58 46 61 C50 64 56 63 58 60 C60 57 60 54 58 52" fill="white" opacity="0.92"/>
+
+  <!-- Stem -->
+  <path d="M55 50 L55 78" stroke="white" stroke-width="2" fill="none" opacity="0.7"/>
+
+  <!-- Network dots suggesting AI/data -->
+  <circle cx="36" cy="36" r="2.5" fill="white" opacity="0.8"/>
+  <circle cx="74" cy="36" r="2.5" fill="white" opacity="0.8"/>
+  <circle cx="55" cy="82" r="2.5" fill="white" opacity="0.8"/>
+  <circle cx="45" cy="40" r="1.5" fill="white" opacity="0.5"/>
+  <circle cx="68" cy="42" r="1.5" fill="white" opacity="0.5"/>
+  <circle cx="60" cy="68" r="1.5" fill="white" opacity="0.5"/>
+
+  <!-- Connecting lines (network) -->
+  <line x1="36" y1="36" x2="45" y2="40" stroke="white" stroke-width="1" opacity="0.4"/>
+  <line x1="74" y1="36" x2="68" y2="42" stroke="white" stroke-width="1" opacity="0.4"/>
+  <line x1="55" y1="82" x2="60" y2="68" stroke="white" stroke-width="1" opacity="0.4"/>
+  <line x1="36" y1="36" x2="55" y2="28" stroke="white" stroke-width="1" opacity="0.3"/>
+  <line x1="74" y1="36" x2="55" y2="28" stroke="white" stroke-width="1" opacity="0.3"/>
+  <line x1="55" y1="82" x2="55" y2="78" stroke="white" stroke-width="1" opacity="0.3"/>
+
+  <!-- "ClimaLearna" in dark navy -->
+  <text x="120" y="54" font-family="'Inter', 'Segoe UI', -apple-system, sans-serif" font-size="30" font-weight="700" fill="#1A2436" letter-spacing="-0.5">ClimaLearna</text>
+
+  <!-- ".ai" in bright green -->
+  <text x="372" y="54" font-family="'Inter', 'Segoe UI', -apple-system, sans-serif" font-size="30" font-weight="700" fill="#23A047" letter-spacing="0">.ai</text>
+
+  <!-- Tagline -->
+  <text x="120" y="78" font-family="'Inter', 'Segoe UI', -apple-system, sans-serif" font-size="11" fill="#71717A" font-weight="400">AI for ESG, HSE &amp; Sustainability Intelligence</text>
+</svg>
