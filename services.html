@@ -29,7 +29,7 @@
             <a href="services.html#hse">HSE Risk Engine</a>
             <a href="services.html#building">Green Building Navigator</a>
             <a href="services.html#data">Data Hub</a>
-            <a href="courses.html">ClimaLearn Academy</a>
+            <a href="services.html#academy">ClimaLearn Academy</a>
           </div>
         </div>
         <a href="dashboard.html">Dashboard</a>
@@ -53,9 +53,16 @@
     </div>
   </section>
 
-  <section class="section">
+  <section class="section" id="servicesSection">
     <div class="container">
-      <div class="services-grid" style="grid-template-columns:repeat(2,1fr);">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;flex-wrap:wrap;gap:12px;">
+        <div>
+          <span class="section-tag">Platform</span>
+          <h2 style="font-size:1.5rem;font-weight:800;color:var(--dark);margin:4px 0 0;">Choose a Module</h2>
+        </div>
+        <a href="services.html" id="showAllLink" class="btn btn-outline" style="display:none;font-size:0.85rem;padding:8px 18px;">← Back to All</a>
+      </div>
+      <div class="services-grid" style="grid-template-columns:repeat(2,1fr);" id="servicesGrid">
         <div class="service-card fade-in" id="esg">
           <div class="service-icon">📊</div>
           <h3>ESG Intelligence Engine</h3>
@@ -116,7 +123,7 @@
           </ul>
           <a href="contact.html" class="btn btn-primary" style="font-size:0.85rem;padding:10px 20px;">Explore Integrations</a>
         </div>
-        <div class="service-card fade-in">
+        <div class="service-card fade-in" id="academy">
           <div class="service-icon">🎓</div>
           <h3>ClimaLearn Academy</h3>
           <p>Role-based learning paths designed for environmental professionals. From ESG fundamentals to advanced LEED certification preparation, our curriculum combines technical depth with practical, real-world applications.</p>
@@ -184,7 +191,7 @@
       <li><a href="services.html#hse"><span class="panel-icon">🛡️</span> HSE Risk Engine</a></li>
       <li><a href="services.html#building"><span class="panel-icon">🏗️</span> Green Building Navigator</a></li>
       <li><a href="services.html#data"><span class="panel-icon">🔗</span> Data Hub</a></li>
-      <li><a href="courses.html"><span class="panel-icon">🎓</span> ClimaLearn Academy</a></li>
+      <li><a href="services.html#academy"><span class="panel-icon">🎓</span> ClimaLearn Academy</a></li>
     </ul>
   </div>
 

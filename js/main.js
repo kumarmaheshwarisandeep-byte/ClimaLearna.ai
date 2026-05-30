@@ -40,6 +40,47 @@ document.addEventListener('DOMContentLoaded', function () {
     if (e.key === 'Escape') closePanel();
   });
 
+  // Service section toggle on click (panel links)
+  const serviceIds = ['esg', 'carbon', 'hse', 'building', 'data', 'academy'];
+
+  function showService(id) {
+    const link = document.getElementById('showAllLink');
+    if (!link) return; // not on services page
+    serviceIds.forEach(sid => {
+      const card = document.getElementById(sid);
+      if (card) { card.style.display = 'none'; card.style.gridColumn = ''; }
+    });
+    const selected = document.getElementById(id);
+    if (selected) {
+      selected.style.display = 'block';
+      selected.style.gridColumn = '1 / -1';
+      selected.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    link.style.display = 'inline-flex';
+  }
+
+  document.querySelectorAll('.services-panel-list a').forEach(link => {
+    link.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      const m = href && href.match(/#(\w+)$/);
+      if (m && serviceIds.includes(m[1])) {
+        closePanel();
+        showService(m[1]);
+        e.preventDefault();
+      }
+    });
+  });
+
+  // Check hash on load for direct deep-links
+  const hash = window.location.hash.replace('#', '');
+  if (hash && serviceIds.includes(hash)) {
+    setTimeout(function() {
+      const target = document.getElementById('servicesSection');
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      showService(hash);
+    }, 200);
+  }
+
   // Header shadow on scroll
   const header = document.querySelector('.header');
   window.addEventListener('scroll', function () {

@@ -355,6 +355,14 @@ ul {
   cursor: pointer;
 }
 
+/* Service single view (panel toggle) */
+.service-card.single-view {
+  max-width: 700px;
+  margin: 0 auto;
+  border: 2px solid var(--primary);
+  box-shadow: 0 8px 32px rgba(27,107,58,0.12);
+}
+
 .mobile-toggle {
   display: none;
   background: none;
