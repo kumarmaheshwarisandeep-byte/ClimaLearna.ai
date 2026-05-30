@@ -21,7 +21,17 @@
       <nav class="nav">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
-        <a href="services.html">Services</a>
+        <div class="nav-dropdown">
+          <a href="services.html">Services</a>
+          <div class="dropdown-menu">
+            <a href="services.html#esg">ESG Intelligence Engine</a>
+            <a href="services.html#carbon">Carbon Analytics</a>
+            <a href="services.html#hse">HSE Risk Engine</a>
+            <a href="services.html#building">Green Building Navigator</a>
+            <a href="services.html#data">Data Hub</a>
+            <a href="courses.html">ClimaLearn Academy</a>
+          </div>
+        </div>
         <a href="dashboard.html">Dashboard</a>
         <a href="carbon-calculator.html">Carbon Calculator</a>
         <a href="courses.html">Academy</a>
@@ -46,7 +56,7 @@
   <section class="section">
     <div class="container">
       <div class="services-grid" style="grid-template-columns:repeat(2,1fr);">
-        <div class="service-card fade-in">
+        <div class="service-card fade-in" id="esg">
           <div class="service-icon">📊</div>
           <h3>ESG Intelligence Engine</h3>
           <p>Automate your ESG data pipeline from collection to disclosure. Our ML engine ingests structured and unstructured data, performs materiality analysis, and generates benchmark-ready reports aligned with GRI, SASB, and TCFD frameworks.</p>
@@ -58,7 +68,7 @@
           </ul>
           <a href="contact.html" class="btn btn-primary" style="font-size:0.85rem;padding:10px 20px;">Request Demo</a>
         </div>
-        <div class="service-card fade-in">
+        <div class="service-card fade-in" id="carbon">
           <div class="service-icon">🌡️</div>
           <h3>Carbon Analytics</h3>
           <p>Real-time carbon footprint tracking with ML-powered emissions modeling. Track scope 1, 2, and 3, simulate reduction scenarios, and monitor progress against science-based targets — all from one dashboard.</p>
@@ -70,7 +80,7 @@
           </ul>
           <a href="carbon-calculator.html" class="btn btn-primary" style="font-size:0.85rem;padding:10px 20px;">Try Calculator</a>
         </div>
-        <div class="service-card fade-in">
+        <div class="service-card fade-in" id="hse">
           <div class="service-icon">🛡️</div>
           <h3>HSE Risk Engine</h3>
           <p>Move from reactive to predictive safety. Our AI analyzes historical incidents, near-misses, and operational data to identify high-risk patterns before incidents happen.</p>
@@ -82,7 +92,7 @@
           </ul>
           <a href="contact.html" class="btn btn-primary" style="font-size:0.85rem;padding:10px 20px;">Learn More</a>
         </div>
-        <div class="service-card fade-in">
+        <div class="service-card fade-in" id="building">
           <div class="service-icon">🏗️</div>
           <h3>Green Building Navigator</h3>
           <p>Navigate LEED, PQP, and Estidama certification with confidence. Smart credit tracking, document management, and compliance verification — all in one workspace.</p>
@@ -94,7 +104,7 @@
           </ul>
           <a href="contact.html" class="btn btn-primary" style="font-size:0.85rem;padding:10px 20px;">Get Started</a>
         </div>
-        <div class="service-card fade-in">
+        <div class="service-card fade-in" id="data">
           <div class="service-icon">🔗</div>
           <h3>Data Hub</h3>
           <p>Your single source of truth for environmental data. Connect IoT sensors, utility meters, ERP systems, and manual inputs into one intelligence layer with automated validation and audit trails.</p>
