@@ -43,6 +43,13 @@
     .scope-nav button { padding: 12px 24px; border-radius: 10px; font-weight: 600; font-size: 0.85rem; border: 1px solid var(--light-gray); background: white; color: var(--gray); cursor: pointer; transition: all 0.3s; }
     .scope-nav button:hover { border-color: var(--secondary); color: var(--dark); }
     .scope-nav button.active { background: var(--primary); color: white; border-color: var(--primary); }
+    .scope-buttons { display: flex; gap: 16px; justify-content: center; margin-bottom: 40px; flex-wrap: wrap; }
+    .scope-btn { display: flex; align-items: center; gap: 10px; padding: 16px 40px; border-radius: 12px; font-weight: 600; font-size: 1rem; border: 1.5px solid var(--light-gray); background: white; color: var(--gray); cursor: pointer; transition: all 0.3s; font-family: 'Inter', sans-serif; }
+    .scope-btn:hover { border-color: var(--secondary); color: var(--dark); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.06); }
+    .scope-btn.active { background: var(--primary); color: white; border-color: var(--primary); box-shadow: 0 6px 24px rgba(27,107,58,0.25); }
+    .scope-btn.active:hover { transform: translateY(-2px); }
+    .scope-num { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 700; background: var(--light); color: var(--primary); }
+    .scope-btn.active .scope-num { background: rgba(255,255,255,0.2); color: white; }
     @media (max-width: 768px) {
       .scope-calc .form-grid { grid-template-columns: 1fr; }
     }
@@ -97,59 +104,24 @@
   <!-- CALCULATOR CONTENT (hidden until start) -->
   <div id="calcContent" style="display:none;">
 
-  <section class="section calculator-section">
-    <div class="container">
-      <div class="section-header fade-in">
-        <span class="section-tag">Quick Estimate</span>
-        <h2>Enter Your Monthly Usage</h2>
-        <p>Our model applies ML-driven emission factors to generate an instant carbon profile.</p>
-      </div>
-      <div class="calculator-wrapper fade-in">
-        <div class="form-group">
-          <label for="electricity">Monthly Electricity Usage (kWh)</label>
-          <input type="number" id="electricity" placeholder="e.g. 10000" min="0" step="100">
-        </div>
-        <div class="form-group">
-          <label for="gas">Monthly Natural Gas Usage (therms)</label>
-          <input type="number" id="gas" placeholder="e.g. 500" min="0" step="10">
-        </div>
-        <div class="form-group">
-          <label for="travel">Monthly Business Travel (miles)</label>
-          <input type="number" id="travel" placeholder="e.g. 2000" min="0" step="100">
-        </div>
-        <div class="form-group">
-          <label for="waste">Monthly Waste Generated (tons)</label>
-          <input type="number" id="waste" placeholder="e.g. 5" min="0" step="0.5">
-        </div>
-        <button onclick="calculateCarbon()" class="btn btn-primary" style="width:100%;justify-content:center;">Estimate Carbon Footprint</button>
-
-        <div class="calculator-result hidden" id="calculator-result">
-          <p style="font-size:1rem;color:var(--gray);margin-bottom:8px;">Estimated annual carbon footprint:</p>
-          <div class="result-number" id="result-number">0 tCO₂e</div>
-          <p id="result-text" style="margin-top:12px;"></p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- DETAILED SCOPE ASSESSMENT -->
   <section class="section" style="background:white;">
     <div class="container">
-      <div class="section-header fade-in">
-        <span class="section-tag">Detailed Assessment</span>
-        <h2>Scope 1 · 2 · 3 Carbon Calculator</h2>
-        <p>Enter your operational data below for a comprehensive emissions analysis across all three scopes.</p>
+
+      <div style="text-align:center;max-width:700px;margin:0 auto 40px;">
+        <span class="section-tag">Understanding Scopes</span>
+        <h2 style="font-size:1.8rem;font-weight:800;color:var(--dark);margin-bottom:12px;">Emissions Classification</h2>
+        <p style="color:var(--gray);line-height:1.7;">The GHG Protocol defines three scopes for comprehensive carbon accounting. Select a scope below to open its calculator.</p>
       </div>
 
-      <div class="scope-nav fade-in">
-        <button class="active" onclick="showScope('s1')">🔥 Scope 1 — Direct Emissions</button>
-        <button onclick="showScope('s2')">⚡ Scope 2 — Indirect Energy</button>
-        <button onclick="showScope('s3')">📦 Scope 3 — Value Chain</button>
+      <div class="scope-buttons">
+        <button class="scope-btn active" onclick="showScope('s1')"><span class="scope-num">1</span> Scope 1</button>
+        <button class="scope-btn" onclick="showScope('s2')"><span class="scope-num">2</span> Scope 2</button>
+        <button class="scope-btn" onclick="showScope('s3')"><span class="scope-num">3</span> Scope 3</button>
       </div>
 
-      <div id="scopeS1" class="scope-calc fade-in">
+      <div id="scopeS1" class="scope-calc">
         <h3>🔥 Scope 1 — Direct Emissions</h3>
-        <div class="sub">Enter fuel consumption and direct emission sources</div>
+        <div class="sub">Company-owned sources including fleet vehicles, on-site fuel combustion, and refrigerant leakage tracking. These are emissions you control directly.</div>
         <div class="form-grid">
           <div class="form-group"><label>Diesel (liters/month)</label><input type="number" id="s1Diesel" value="8000" oninput="calcScope1()"></div>
           <div class="form-group"><label>Petrol (liters/month)</label><input type="number" id="s1Petrol" value="4000" oninput="calcScope1()"></div>
@@ -166,9 +138,9 @@
         <div class="ai-box" id="s1Insight">🧠 <strong>AI Insight:</strong> Enter values above to generate insights.</div>
       </div>
 
-      <div id="scopeS2" class="scope-calc fade-in" style="display:none;">
+      <div id="scopeS2" class="scope-calc" style="display:none;">
         <h3>⚡ Scope 2 — Indirect Energy</h3>
-        <div class="sub">Enter purchased electricity, heating, and cooling</div>
+        <div class="sub">Purchased electricity, steam, heating, and cooling with location-based and market-based calculation methods reflecting grid emission factors.</div>
         <div class="form-grid">
           <div class="form-group"><label>Electricity (kWh/month)</label><input type="number" id="s2Electricity" value="100000" oninput="calcScope2()"></div>
           <div class="form-group"><label>Purchased Steam (kWh/month)</label><input type="number" id="s2Steam" value="15000" oninput="calcScope2()"></div>
@@ -184,9 +156,9 @@
         <div class="ai-box" id="s2Insight">🧠 <strong>AI Insight:</strong> Enter values above to generate insights.</div>
       </div>
 
-      <div id="scopeS3" class="scope-calc fade-in" style="display:none;">
+      <div id="scopeS3" class="scope-calc" style="display:none;">
         <h3>📦 Scope 3 — Value Chain</h3>
-        <div class="sub">Enter supply chain and indirect emission sources</div>
+        <div class="sub">15 categories of value chain emissions including purchased goods, transportation, business travel, and product use phase — often the largest source.</div>
         <div class="form-grid">
           <div class="form-group"><label>Employee Commuting (km/month)</label><input type="number" id="s3Commute" value="50000" oninput="calcScope3()"></div>
           <div class="form-group"><label>Business Travel (km/month)</label><input type="number" id="s3Travel" value="20000" oninput="calcScope3()"></div>
@@ -203,49 +175,12 @@
         <div class="ai-box" id="s3Insight">🧠 <strong>AI Insight:</strong> Enter values above to generate insights.</div>
       </div>
 
-      <div class="scope-total fade-in" id="scopeTotal">
+      <div class="scope-total">
         <div class="label">Total Carbon Footprint (Scope 1 + 2 + 3)</div>
         <div class="big" id="totalFootprint">0</div>
         <div class="label" style="margin-top:4px;">tCO₂e per month</div>
       </div>
 
-    </div>
-  </section>
-
-  <!-- EMISSIONS CLASSIFICATION (as buttons) -->
-  <section class="section" style="background:var(--light);">
-    <div class="container">
-      <div class="section-header fade-in">
-        <span class="section-tag">Understanding Scopes</span>
-        <h2>Emissions Classification</h2>
-        <p>The GHG Protocol defines three scopes for comprehensive carbon accounting. Click a scope to open its calculator above.</p>
-      </div>
-      <div class="features-grid">
-        <div class="feature-card fade-in" onclick="showScope('s1');document.getElementById('scopeS1').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;">
-          <div class="feature-icon">🔌</div>
-          <div>
-            <h4>Scope 1 — Direct Emissions</h4>
-            <p>Company-owned sources including fleet vehicles, on-site fuel combustion, and refrigerant leakage tracking. These are emissions you control directly.</p>
-            <span style="display:inline-block;margin-top:8px;color:var(--primary);font-weight:600;font-size:0.85rem;">Open Calculator →</span>
-          </div>
-        </div>
-        <div class="feature-card fade-in" onclick="showScope('s2');document.getElementById('scopeS2').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;">
-          <div class="feature-icon">⚡</div>
-          <div>
-            <h4>Scope 2 — Indirect Energy</h4>
-            <p>Purchased electricity, steam, heating, and cooling with location-based and market-based calculation methods reflecting grid emission factors.</p>
-            <span style="display:inline-block;margin-top:8px;color:var(--primary);font-weight:600;font-size:0.85rem;">Open Calculator →</span>
-          </div>
-        </div>
-        <div class="feature-card fade-in" onclick="showScope('s3');document.getElementById('scopeS3').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;">
-          <div class="feature-icon">🚚</div>
-          <div>
-            <h4>Scope 3 — Value Chain</h4>
-            <p>15 categories of value chain emissions including purchased goods, transportation, business travel, and product use phase — often the largest source.</p>
-            <span style="display:inline-block;margin-top:8px;color:var(--primary);font-weight:600;font-size:0.85rem;">Open Calculator →</span>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -315,8 +250,8 @@
     function showScope(s) {
       document.querySelectorAll('.scope-calc').forEach(el => el.style.display = 'none');
       document.getElementById('scope' + s.toUpperCase()).style.display = 'block';
-      document.querySelectorAll('.scope-nav button').forEach(b => b.classList.remove('active'));
-      document.querySelector(`.scope-nav button[onclick*="'${s}'"]`).classList.add('active');
+      document.querySelectorAll('.scope-btn').forEach(b => b.classList.remove('active'));
+      document.querySelector(`.scope-btn[onclick*="'${s}'"]`).classList.add('active');
       if (s === 's1') calcScope1();
       else if (s === 's2') calcScope2();
       else calcScope3();
