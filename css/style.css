@@ -167,56 +167,90 @@ ul {
 
 /* Hero */
 .hero {
-  padding: 140px 0 80px;
-  background: linear-gradient(135deg, var(--light) 0%, #d8f3dc 100%);
+  padding: 120px 0 80px;
+  background: #FFFFFF;
   position: relative;
   overflow: hidden;
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  right: -20%;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(82, 183, 136, 0.15) 0%, transparent 70%);
-  border-radius: 50%;
 }
 
 .hero .container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  gap: 80px;
   align-items: center;
   position: relative;
   z-index: 1;
 }
 
-.hero-content h1 {
-  font-size: 3rem;
-  font-weight: 800;
-  line-height: 1.2;
-  color: var(--dark);
+.hero-tag {
+  display: inline-block;
+  color: #71717A;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
   margin-bottom: 20px;
 }
 
-.hero-content h1 span {
-  color: var(--primary);
-  position: relative;
+.hero-content h1 {
+  font-size: 3.2rem;
+  font-weight: 800;
+  line-height: 1.15;
+  color: #1A2436;
+  margin-bottom: 0;
+}
+
+.hero-content .text-green {
+  color: #23A047;
 }
 
 .hero-content p {
-  font-size: 1.1rem;
-  color: var(--gray);
-  margin-bottom: 32px;
-  max-width: 540px;
+  font-size: 1rem;
+  color: #71717A;
+  line-height: 1.7;
+  margin: 24px 0 36px;
+  max-width: 520px;
 }
 
 .hero-buttons {
   display: flex;
-  gap: 16px;
+  gap: 14px;
   flex-wrap: wrap;
+}
+
+.hero-buttons a {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 32px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s;
+}
+
+.hero-buttons .btn-primary {
+  background: #23A047;
+  color: white;
+  border: none;
+}
+
+.hero-buttons .btn-primary:hover {
+  background: #1b8a3a;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(35, 160, 71, 0.25);
+}
+
+.hero-buttons .btn-outline-custom {
+  background: white;
+  border: 1.5px solid #23A047;
+  color: #23A047;
+}
+
+.hero-buttons .btn-outline-custom:hover {
+  background: #f0fdf4;
+  transform: translateY(-1px);
 }
 
 .btn {
@@ -268,29 +302,48 @@ ul {
 .hero-image {
   display: flex;
   justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
-.hero-illustration {
-  width: 100%;
-  max-width: 500px;
-  height: 400px;
-  background: linear-gradient(135deg, var(--primary-light), var(--accent), var(--secondary));
-  border-radius: 20px;
+.hero-globe {
+  width: 420px;
+  height: 420px;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
-  font-size: 5rem;
-  position: relative;
-  overflow: hidden;
 }
 
-.hero-illustration::before {
-  content: '';
+.hero-globe svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Light chart bars behind globe */
+.hero-globe-bg {
   position: absolute;
   inset: 0;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 800'%3E%3Cpath fill='%23ffffff' fill-opacity='0.1' d='M400 0C179.1 0 0 179.1 0 400s179.1 400 400 400 400-179.1 400-400S620.9 0 400 0z'/%3E%3C/svg%3E") center/cover;
-  opacity: 0.3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.hero-globe-bg svg {
+  width: 100%;
+  height: 100%;
+  opacity: 0.35;
+}
+
+/* Leaves */
+.hero-leaves {
+  position: absolute;
+  bottom: -5px;
+  right: -5px;
+  width: 90px;
+  height: 90px;
+  z-index: 2;
 }
 
 /* Stats Bar */
@@ -1028,12 +1081,7 @@ ul {
 .service-card:nth-child(6) .service-icon { animation: float 5.8s ease-in-out infinite; animation-delay: -2.5s; }
 
 /* Hero decorative shapes */
-.hero-shape {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 0;
-}
+
 
 .hero-shape-1 {
   width: 80px;
@@ -1105,21 +1153,34 @@ ul {
 
 /* Responsive */
 @media (max-width: 968px) {
+  .hero {
+    padding: 100px 0 60px;
+  }
+
   .hero .container {
     grid-template-columns: 1fr;
     text-align: center;
+    gap: 48px;
   }
 
   .hero-content p {
-    margin: 0 auto 32px;
+    margin: 24px auto 36px;
   }
 
   .hero-buttons {
     justify-content: center;
   }
 
-  .hero-illustration {
+  .hero-globe {
+    width: 300px;
     height: 300px;
+  }
+
+  .hero-leaves {
+    width: 65px;
+    height: 65px;
+    bottom: 0;
+    right: 0;
   }
 
   .services-grid,
@@ -1182,6 +1243,16 @@ ul {
 
   .hero-content h1 {
     font-size: 2rem;
+  }
+
+  .hero-globe {
+    width: 240px;
+    height: 240px;
+  }
+
+  .hero-leaves {
+    width: 50px;
+    height: 50px;
   }
 
   .section-header h2 {
