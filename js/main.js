@@ -9,10 +9,35 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // Close nav on link click (mobile)
-  document.querySelectorAll('.nav a').forEach(link => {
+  document.querySelectorAll('.nav a, .services-trigger').forEach(link => {
     link.addEventListener('click', () => {
       nav.classList.remove('open');
     });
+  });
+
+  // Services slide panel
+  const trigger = document.querySelector('.services-trigger');
+  const panel = document.getElementById('servicesPanel');
+  const overlay = document.getElementById('servicesOverlay');
+  const closeBtn = document.getElementById('servicesPanelClose');
+
+  function openPanel() {
+    if (panel) panel.classList.add('open');
+    if (overlay) overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closePanel() {
+    if (panel) panel.classList.remove('open');
+    if (overlay) overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  if (trigger) trigger.addEventListener('click', openPanel);
+  if (closeBtn) closeBtn.addEventListener('click', closePanel);
+  if (overlay) overlay.addEventListener('click', closePanel);
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closePanel();
   });
 
   // Header shadow on scroll

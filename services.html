@@ -22,7 +22,7 @@
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <div class="nav-dropdown">
-          <a href="services.html">Services</a>
+          <a class="services-trigger">Services</a>
           <div class="dropdown-menu">
             <a href="services.html#esg">ESG Intelligence Engine</a>
             <a href="services.html#carbon">Carbon Analytics</a>
@@ -170,6 +170,23 @@
       </div>
     </div>
   </section>
+
+  <!-- Services slide-out panel -->
+  <div class="services-panel-overlay" id="servicesOverlay"></div>
+  <div class="services-panel" id="servicesPanel">
+    <div class="services-panel-header">
+      <h3>Our Platform</h3>
+      <button class="services-panel-close" id="servicesPanelClose">✕</button>
+    </div>
+    <ul class="services-panel-list">
+      <li><a href="services.html#esg"><span class="panel-icon">📊</span> ESG Intelligence Engine</a></li>
+      <li><a href="services.html#carbon"><span class="panel-icon">🌡️</span> Carbon Analytics</a></li>
+      <li><a href="services.html#hse"><span class="panel-icon">🛡️</span> HSE Risk Engine</a></li>
+      <li><a href="services.html#building"><span class="panel-icon">🏗️</span> Green Building Navigator</a></li>
+      <li><a href="services.html#data"><span class="panel-icon">🔗</span> Data Hub</a></li>
+      <li><a href="courses.html"><span class="panel-icon">🎓</span> ClimaLearn Academy</a></li>
+    </ul>
+  </div>
 
   <footer class="footer">
     <div class="container">
