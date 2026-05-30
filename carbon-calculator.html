@@ -91,26 +91,19 @@
     </div>
   </section>
 
-  <!-- START SCREEN -->
-  <div class="start-screen" id="calcStart">
-    <div class="icon">🌍</div>
-    <h2>Carbon Footprint Estimator</h2>
-    <p>Launch the interactive tool to estimate your organization's carbon footprint across all three scopes — with real-time KPIs, charts, and AI-powered insights.</p>
-    <button class="btn btn-primary" onclick="startCalculator()" style="padding:16px 40px;font-size:1rem;">
-      📊 Carbon Footprint Estimator
+  <div style="text-align:center;padding:60px 20px 20px;">
+    <button onclick="document.getElementById('scopeSection').scrollIntoView({behavior:'smooth'})" class="btn btn-primary" style="padding:18px 48px;font-size:1.1rem;box-shadow:0 8px 30px rgba(27,107,58,0.3);">
+      🌍 Carbon Footprint Estimator
     </button>
   </div>
 
-  <!-- CALCULATOR CONTENT (hidden until start) -->
-  <div id="calcContent" style="display:none;">
-
-  <section class="section" style="background:white;">
+  <section class="section" style="background:white;padding-top:20px;" id="scopeSection">
     <div class="container">
 
       <div style="text-align:center;max-width:700px;margin:0 auto 40px;">
         <span class="section-tag">Understanding Scopes</span>
         <h2 style="font-size:1.8rem;font-weight:800;color:var(--dark);margin-bottom:12px;">Emissions Classification</h2>
-        <p style="color:var(--gray);line-height:1.7;">The GHG Protocol defines three scopes for comprehensive carbon accounting. Select a scope below to open its calculator.</p>
+        <p style="color:var(--gray);line-height:1.7;">The GHG Protocol defines three scopes for comprehensive carbon accounting.</p>
       </div>
 
       <div class="scope-buttons">
@@ -184,8 +177,6 @@
     </div>
   </section>
 
-  </div><!-- /calcContent -->
-
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
@@ -236,14 +227,6 @@
   </footer>
   <script src="js/main.js"></script>
   <script>
-    // ─── START SCREEN ───
-    function startCalculator() {
-      document.getElementById('calcStart').style.display = 'none';
-      document.getElementById('calcContent').style.display = 'block';
-      document.getElementById('calcContent').scrollIntoView({ behavior: 'smooth' });
-      calcScope1(); calcScope2(); calcScope3();
-    }
-
     // ─── SCOPE CALCULATORS ───
     let chartS1, chartS2, chartS3;
 
