@@ -6,6 +6,33 @@
   <title>Carbon Calculator - ClimaLearn AI</title>
   <meta name="description" content="Use ClimaLearn.ai's AI-assisted carbon footprint calculator to estimate scope 1, 2, and 3 emissions for your organization.">
   <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <style>
+    .scope-calc { background: white; border-radius: 12px; border: 1px solid var(--light-gray); box-shadow: var(--shadow); padding: 28px; margin-bottom: 24px; }
+    .scope-calc h3 { font-size: 1.2rem; font-weight: 700; color: var(--dark); margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
+    .scope-calc .sub { font-size: 0.85rem; color: var(--gray); margin-bottom: 20px; }
+    .scope-calc .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .scope-calc .form-group { margin-bottom: 4px; }
+    .scope-calc .form-group label { display: block; font-size: 0.82rem; color: var(--gray); margin-bottom: 6px; font-weight: 500; }
+    .scope-calc .form-group input { width: 100%; background: var(--light); border: 1px solid var(--light-gray); border-radius: 8px; padding: 10px 14px; color: var(--dark); font-size: 0.9rem; font-family: 'Inter', sans-serif; outline: none; transition: border 0.3s; }
+    .scope-calc .form-group input:focus { border-color: var(--primary); }
+    .scope-calc .result-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 12px; padding: 20px; margin: 20px 0; text-align: center; }
+    .scope-calc .result-box .big { font-size: 2.2rem; font-weight: 800; color: var(--primary); }
+    .scope-calc .result-box .label { font-size: 0.8rem; color: var(--gray); }
+    .scope-calc canvas { margin-top: 16px; max-height: 200px; }
+    .scope-calc .ai-box { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 10px; padding: 14px 18px; margin-top: 16px; font-size: 0.85rem; color: var(--gray); line-height: 1.6; }
+    .scope-calc .ai-box strong { color: var(--primary); }
+    .scope-total { background: linear-gradient(135deg, #f0fdf4, #eff6ff); border: 2px solid var(--primary); border-radius: 16px; padding: 32px; text-align: center; margin: 32px 0; }
+    .scope-total .big { font-size: 2.8rem; font-weight: 800; color: var(--primary); }
+    .scope-total .label { font-size: 0.9rem; color: var(--gray); }
+    .scope-nav { display: flex; gap: 12px; margin-bottom: 32px; flex-wrap: wrap; }
+    .scope-nav button { padding: 12px 24px; border-radius: 10px; font-weight: 600; font-size: 0.85rem; border: 1px solid var(--light-gray); background: white; color: var(--gray); cursor: pointer; transition: all 0.3s; }
+    .scope-nav button:hover { border-color: var(--secondary); color: var(--dark); }
+    .scope-nav button.active { background: var(--primary); color: white; border-color: var(--primary); }
+    @media (max-width: 768px) {
+      .scope-calc .form-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
   <header class="header">
@@ -20,7 +47,6 @@
         <a href="about.html">About</a>
         <a href="services.html">Services</a>
         <a href="dashboard.html">Dashboard</a>
-        <a href="reduction-pathways.html">Pathways</a>
         <a href="carbon-calculator.html">Carbon Calculator</a>
         <a href="courses.html">Academy</a>
         <a href="contact.html">Contact</a>
@@ -76,40 +102,117 @@
     </div>
   </section>
 
+  <!-- DETAILED SCOPE ASSESSMENT -->
+  <section class="section" style="background:var(--light);">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-tag">Detailed Assessment</span>
+        <h2>Scope 1 · 2 · 3 Carbon Calculator</h2>
+        <p>Enter your operational data below for a comprehensive emissions analysis across all three scopes.</p>
+      </div>
+
+      <div class="scope-nav fade-in">
+        <button class="active" onclick="showScope('s1')">🔥 Scope 1 — Direct Emissions</button>
+        <button onclick="showScope('s2')">⚡ Scope 2 — Indirect Energy</button>
+        <button onclick="showScope('s3')">📦 Scope 3 — Value Chain</button>
+      </div>
+
+      <!-- SCOPE 1 -->
+      <div id="scopeS1" class="scope-calc fade-in">
+        <h3>🔥 Scope 1 — Direct Emissions</h3>
+        <div class="sub">Enter fuel consumption and direct emission sources</div>
+        <div class="form-grid">
+          <div class="form-group"><label>Diesel (liters/month)</label><input type="number" id="s1Diesel" value="8000" oninput="calcScope1()"></div>
+          <div class="form-group"><label>Petrol (liters/month)</label><input type="number" id="s1Petrol" value="4000" oninput="calcScope1()"></div>
+          <div class="form-group"><label>Fuel Oil (liters/month)</label><input type="number" id="s1FuelOil" value="2000" oninput="calcScope1()"></div>
+          <div class="form-group"><label>Generator Hours (hrs/month)</label><input type="number" id="s1GenHours" value="120" oninput="calcScope1()"></div>
+          <div class="form-group"><label>Company Vehicles (km/month)</label><input type="number" id="s1Vehicles" value="15000" oninput="calcScope1()"></div>
+        </div>
+        <div class="result-box">
+          <div class="label">Total Scope 1 Emissions</div>
+          <div class="big" id="s1Result">0</div>
+          <div class="label">tCO₂e per month</div>
+        </div>
+        <canvas id="chartS1"></canvas>
+        <div class="ai-box" id="s1Insight">🧠 <strong>AI Insight:</strong> Enter values above to generate insights.</div>
+      </div>
+
+      <!-- SCOPE 2 -->
+      <div id="scopeS2" class="scope-calc fade-in" style="display:none;">
+        <h3>⚡ Scope 2 — Indirect Energy</h3>
+        <div class="sub">Enter purchased electricity, heating, and cooling</div>
+        <div class="form-grid">
+          <div class="form-group"><label>Electricity (kWh/month)</label><input type="number" id="s2Electricity" value="100000" oninput="calcScope2()"></div>
+          <div class="form-group"><label>Purchased Steam (kWh/month)</label><input type="number" id="s2Steam" value="15000" oninput="calcScope2()"></div>
+          <div class="form-group"><label>Cooling (kWh/month)</label><input type="number" id="s2Cooling" value="8000" oninput="calcScope2()"></div>
+          <div class="form-group"><label>Heating (kWh/month)</label><input type="number" id="s2Heating" value="12000" oninput="calcScope2()"></div>
+        </div>
+        <div class="result-box">
+          <div class="label">Total Scope 2 Emissions</div>
+          <div class="big" id="s2Result">0</div>
+          <div class="label">tCO₂e per month</div>
+        </div>
+        <canvas id="chartS2"></canvas>
+        <div class="ai-box" id="s2Insight">🧠 <strong>AI Insight:</strong> Enter values above to generate insights.</div>
+      </div>
+
+      <!-- SCOPE 3 -->
+      <div id="scopeS3" class="scope-calc fade-in" style="display:none;">
+        <h3>📦 Scope 3 — Value Chain</h3>
+        <div class="sub">Enter supply chain and indirect emission sources</div>
+        <div class="form-grid">
+          <div class="form-group"><label>Employee Commuting (km/month)</label><input type="number" id="s3Commute" value="50000" oninput="calcScope3()"></div>
+          <div class="form-group"><label>Business Travel (km/month)</label><input type="number" id="s3Travel" value="20000" oninput="calcScope3()"></div>
+          <div class="form-group"><label>Waste Disposal (tons/month)</label><input type="number" id="s3Waste" value="20" oninput="calcScope3()"></div>
+          <div class="form-group"><label>Purchased Goods ($/month)</label><input type="number" id="s3Goods" value="500000" oninput="calcScope3()"></div>
+          <div class="form-group"><label>Supply Chain Transport (km/month)</label><input type="number" id="s3SupplyChain" value="80000" oninput="calcScope3()"></div>
+        </div>
+        <div class="result-box">
+          <div class="label">Total Scope 3 Emissions</div>
+          <div class="big" id="s3Result">0</div>
+          <div class="label">tCO₂e per month</div>
+        </div>
+        <canvas id="chartS3"></canvas>
+        <div class="ai-box" id="s3Insight">🧠 <strong>AI Insight:</strong> Enter values above to generate insights.</div>
+      </div>
+
+      <!-- TOTAL -->
+      <div class="scope-total fade-in" id="scopeTotal">
+        <div class="label">Total Carbon Footprint (Scope 1 + 2 + 3)</div>
+        <div class="big" id="totalFootprint">0</div>
+        <div class="label" style="margin-top:4px;">tCO₂e per month</div>
+      </div>
+
+    </div>
+  </section>
+
   <section class="section">
     <div class="container">
       <div class="section-header fade-in">
-        <span class="section-tag">Capabilities</span>
-        <h2>Beyond Basic Estimation</h2>
-        <p>The full Carbon Intelligence Suite provides deeper analysis and decision support.</p>
+        <span class="section-tag">Understanding Scopes</span>
+        <h2>Emissions Classification</h2>
+        <p>The GHG Protocol defines three scopes for comprehensive carbon accounting.</p>
       </div>
       <div class="features-grid">
         <div class="feature-card fade-in">
           <div class="feature-icon">🔌</div>
           <div>
             <h4>Scope 1 — Direct Emissions</h4>
-            <p>Company-owned sources including fleet vehicles, on-site fuel combustion, and refrigerant leakage tracking.</p>
+            <p>Company-owned sources including fleet vehicles, on-site fuel combustion, and refrigerant leakage tracking. These are emissions you control directly.</p>
           </div>
         </div>
         <div class="feature-card fade-in">
           <div class="feature-icon">⚡</div>
           <div>
             <h4>Scope 2 — Indirect Energy</h4>
-            <p>Purchased electricity, steam, heating, and cooling with location-based and market-based calculation methods.</p>
+            <p>Purchased electricity, steam, heating, and cooling with location-based and market-based calculation methods reflecting grid emission factors.</p>
           </div>
         </div>
         <div class="feature-card fade-in">
           <div class="feature-icon">🚚</div>
           <div>
             <h4>Scope 3 — Value Chain</h4>
-            <p>15 categories of value chain emissions including purchased goods, transportation, and product use phase.</p>
-          </div>
-        </div>
-        <div class="feature-card fade-in">
-          <div class="feature-icon">📈</div>
-          <div>
-            <h4>Reduction Pathways</h4>
-            <p>Scenario modeling to compare decarbonization strategies and track progress toward science-based targets.</p>
+            <p>15 categories of value chain emissions including purchased goods, transportation, business travel, and product use phase — often the largest source.</p>
           </div>
         </div>
       </div>
@@ -165,5 +268,99 @@
     </div>
   </footer>
   <script src="js/main.js"></script>
+  <script>
+    let chartS1, chartS2, chartS3;
+    let activeScope = 's1';
+
+    function showScope(s) {
+      activeScope = s;
+      document.querySelectorAll('.scope-calc').forEach(el => el.style.display = 'none');
+      document.getElementById('scope' + s.toUpperCase()).style.display = 'block';
+      document.querySelectorAll('.scope-nav button').forEach(b => b.classList.remove('active'));
+      document.querySelector(`.scope-nav button[onclick*="'${s}'"]`).classList.add('active');
+      if (s === 's1') calcScope1();
+      else if (s === 's2') calcScope2();
+      else calcScope3();
+    }
+
+    // SCOPE 1
+    function calcScope1() {
+      const d = parseFloat(document.getElementById('s1Diesel').value) || 0;
+      const p = parseFloat(document.getElementById('s1Petrol').value) || 0;
+      const f = parseFloat(document.getElementById('s1FuelOil').value) || 0;
+      const g = parseFloat(document.getElementById('s1GenHours').value) || 0;
+      const v = parseFloat(document.getElementById('s1Vehicles').value) || 0;
+      const total = (d * 0.00268) + (p * 0.00231) + (f * 0.00298) + (g * 0.0012) + (v * 0.00014);
+      document.getElementById('s1Result').textContent = total.toFixed(2);
+      const parts = [d*0.00268, p*0.00231, f*0.00298, g*0.0012, v*0.00014];
+      if (chartS1) chartS1.destroy();
+      chartS1 = new Chart(document.getElementById('chartS1'), {
+        type: 'doughnut',
+        data: { labels: ['Diesel','Petrol','Fuel Oil','Generators','Vehicles'], datasets: [{ data: parts, backgroundColor: ['#16a34a','#3b82f6','#f59e0b','#ef4444','#8b5cf6'], borderWidth: 0 }] },
+        options: { responsive: true, maintainAspectRatio: true, plugins: { legend: { position: 'bottom', labels: { usePointStyle: true, font: { size: 10 }, padding: 12 } } } }
+      });
+      let insight = '✅ Emissions within expected range for current operations.';
+      if (d > 10000) insight = '⚠️ High diesel consumption detected. Consider transitioning to hybrid generators or electric alternatives.';
+      else if (g > 200) insight = '⚡ Generator usage is significant. Schedule maintenance to improve fuel efficiency.';
+      else if (v > 20000) insight = '🚗 Fleet emissions are notable. Evaluate EV transition roadmap and route optimization software.';
+      document.getElementById('s1Insight').innerHTML = '🧠 <strong>AI Insight:</strong> ' + insight;
+      updateTotal();
+    }
+
+    // SCOPE 2
+    function calcScope2() {
+      const el = parseFloat(document.getElementById('s2Electricity').value) || 0;
+      const st = parseFloat(document.getElementById('s2Steam').value) || 0;
+      const co = parseFloat(document.getElementById('s2Cooling').value) || 0;
+      const he = parseFloat(document.getElementById('s2Heating').value) || 0;
+      const total = (el * 0.0004) + (st * 0.00025) + (co * 0.0003) + (he * 0.00028);
+      document.getElementById('s2Result').textContent = total.toFixed(2);
+      const parts = [el*0.0004, st*0.00025, co*0.0003, he*0.00028];
+      if (chartS2) chartS2.destroy();
+      chartS2 = new Chart(document.getElementById('chartS2'), {
+        type: 'bar',
+        data: { labels: ['Electricity','Steam','Cooling','Heating'], datasets: [{ data: parts, backgroundColor: ['#16a34a','#3b82f6','#f59e0b','#ef4444'], borderRadius: 6 }] },
+        options: { responsive: true, maintainAspectRatio: true, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.04)' } }, x: { grid: { display: false } } } }
+      });
+      let insight = '✅ Energy mix is well-balanced.';
+      if (el > 150000) insight = '⚡ Electricity consumption is high. Recommend solar PV feasibility study and LED retrofit across facilities.';
+      else if (el > 100000) insight = '💡 Consider energy audit to identify efficiency opportunities in HVAC and lighting systems.';
+      document.getElementById('s2Insight').innerHTML = '🧠 <strong>AI Insight:</strong> ' + insight;
+      updateTotal();
+    }
+
+    // SCOPE 3
+    function calcScope3() {
+      const cm = parseFloat(document.getElementById('s3Commute').value) || 0;
+      const tr = parseFloat(document.getElementById('s3Travel').value) || 0;
+      const wa = parseFloat(document.getElementById('s3Waste').value) || 0;
+      const gd = parseFloat(document.getElementById('s3Goods').value) || 0;
+      const sc = parseFloat(document.getElementById('s3SupplyChain').value) || 0;
+      const total = (cm * 0.00012) + (tr * 0.00018) + (wa * 0.6) + (gd * 0.000002) + (sc * 0.00015);
+      document.getElementById('s3Result').textContent = total.toFixed(2);
+      const parts = [cm*0.00012, tr*0.00018, wa*0.6, gd*0.000002, sc*0.00015];
+      if (chartS3) chartS3.destroy();
+      chartS3 = new Chart(document.getElementById('chartS3'), {
+        type: 'polarArea',
+        data: { labels: ['Commuting','Travel','Waste','Purchased Goods','Supply Chain'], datasets: [{ data: parts, backgroundColor: ['rgba(22,163,74,0.6)','rgba(59,130,246,0.6)','rgba(245,158,11,0.6)','rgba(139,92,246,0.6)','rgba(239,68,68,0.6)'], borderWidth: 0 }] },
+        options: { responsive: true, maintainAspectRatio: true, plugins: { legend: { position: 'bottom', labels: { usePointStyle: true, font: { size: 10 }, padding: 12 } } }, scales: { r: { grid: { color: 'rgba(0,0,0,0.04)' }, ticks: { backdropColor: 'transparent' } } } }
+      });
+      let insight = '✅ Supply chain emissions are being tracked.';
+      if (gd > 1000000) insight = '📦 Purchased goods dominate Scope 3. Engage top suppliers on emission reduction targets.';
+      else if (cm > 80000) insight = '🚗 Employee commuting is significant. Promote remote work, carpooling, and public transit subsidies.';
+      document.getElementById('s3Insight').innerHTML = '🧠 <strong>AI Insight:</strong> ' + insight;
+      updateTotal();
+    }
+
+    function updateTotal() {
+      const s1 = parseFloat(document.getElementById('s1Result').textContent) || 0;
+      const s2 = parseFloat(document.getElementById('s2Result').textContent) || 0;
+      const s3 = parseFloat(document.getElementById('s3Result').textContent) || 0;
+      document.getElementById('totalFootprint').textContent = (s1 + s2 + s3).toFixed(2);
+    }
+
+    // Init on load
+    document.addEventListener('DOMContentLoaded', function() { calcScope1(); calcScope2(); calcScope3(); });
+  </script>
 </body>
 </html>
