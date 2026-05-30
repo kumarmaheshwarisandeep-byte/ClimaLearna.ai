@@ -199,7 +199,7 @@ ul {
 
 /* Hero */
 .hero {
-  padding: 120px 0 80px;
+  padding: 60px 0 80px;
   background: #FFFFFF;
   position: relative;
   overflow: hidden;
@@ -212,6 +212,44 @@ ul {
   align-items: center;
   position: relative;
   z-index: 1;
+}
+
+.hero-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.hero-brand-img {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.hero-brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.hero-brand-name {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #1A2436;
+}
+
+.hero-brand-dot {
+  color: #23A047;
+}
+
+.hero-brand-tagline {
+  font-size: 0.6rem;
+  color: #71717A;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
 }
 
 .hero-tag {
