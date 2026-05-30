@@ -82,6 +82,38 @@ ul {
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--primary-dark);
+  text-decoration: none;
+}
+
+.logo-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.logo-brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1A2436;
+}
+
+.logo-brand .ai-dot {
+  color: #23A047;
+}
+
+.logo-tagline {
+  font-size: 0.6rem;
+  color: #71717A;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
 }
 
 .logo-icon {
